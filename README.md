@@ -1,32 +1,31 @@
-## Is the difference between deep hedging and delta hedging a statistical arbitrage?
+## Hedging for Stat Arb Strategies**
 
-This repository contains the deep hedging environment used in our paper, François et al. (2024), where we observe that the difference between deep hedging and delta hedging is not always statistical arbitrage. We employ deep policy gradient-type reinforcement learning (RL) algorithm. The repository consists of two main components:
+This repository provides a hedging environment for statistical arbitrage. It utilizes a deep policy gradient reinforcement learning (RL) algorithm to analyze this relationship. The repository consists of two primary components:
 
-- Component 1: Environment generation based on three market simulators: discrete version of Black-Scholes market, GARCH dynamics and GJR-GARCH dynamics.
-- Component 2: Implementation of the RL agent to hedge European options.
+- Component 1: Environment generation using three market simulators— a discrete Black-Scholes market, GARCH dynamics, and GJR-GARCH dynamics.
+- Component 2: Implementation of an RL-based hedging agent for European options.
 
-## Short description
+## Overview
 
-1. The environment simulators, component 1, are contained in the `src/features/` folder. 
+1. Market Environment Simulation (Component 1)
+    - Located in the src/features/ directory.
+    - The file features_simulation.py generates the RL environment, simulating stock returns, volatility, and risk factors that define the state space. Additional theoretical details are available in our paper.
 
-    - `features_simulation.py` simulates the RL environment, including underlying stock returns, volatility, and risk factors that characterize the state space. Further theoretical simulation details can be found in in our paper.
+2. Deep Reinforcement Learning Model (Component 2)
+    - Found in the src/models/ directory.
+    - The deep_rl_agent.py script contains a Python class that trains and evaluates RL agents based on a standard feedforward neural network (FFNN).
 
-2. Deep RL model, component 2, is contained in the `src/models/` folder. 
+Example implementations of the pipeline can be found in the notebooks folder. A standalone Python script for executing the full pipeline is available in the pipeline directory.
 
-    - `deep_rl_agent.py` contains all model functionalities through a python class that trains and assesses the performance of RL agents based on a standard FFNN.
-
-Examples showcasing the utilization of the pipeline can be observed in the notebooks directory.
-The Python script (.py file) for executing the pipeline from the terminal can be found in the pipeline directory.
-
-## How to run
+## How to Run the Project
 
 1. **Prerequisities**
-    - Python 3.9.6 was used as development environment.
-    - The latest versions of pip
+    - Developed using Python 3.9.6.
+    - Ensure pip is installed and up to date.
 
 2. **Environment setup**
 
-- Clone the project repository:
+- Clone the repository:
 
 ```nohighlight
 git clone https://github.com/OctavioPM/DeepHedging_StatisticalArbitrage.git
@@ -40,7 +39,7 @@ python -m venv venv
 source venv/bin/activate
 ```
 
-- Install the requirements using `pip`
+- Install required dependencies:
 
 ```nohighlight
 pip install -r requirements.txt
@@ -57,9 +56,11 @@ pip install -r requirements.txt
 
 4. **Running the script**: We provide two options to run the deep hedging JIVR pipeline:
 
-- Option 1. The two main components of the pipeline can be executed independently following the example `deep_hedging_pipeline.ipynb` included in the `notebooks` folder. This notebook outlines the performance metrics computed in Table 1 of our paper François et al. (2024) for the RL-CVaR agent under Black-Scholes dynamics.
+- Option 1. Run each component separately using the provided Jupyter notebook `deep_hedging_pipeline.ipynb` included in the `notebooks` folder. This notebook outlines performance metrics, including those from Table 1 in François et al. (2024), for the RL-CVaR agent under Black-Scholes dynamics.
 
-- Option 2. The final pipeline can be executed from the terminal by using the following command in the `pipeline` folder: 
+- Option 2. Execute the full pipeline from the terminal. Navigate to the `pipeline` folder and run the appropriate script.
+
+Thank you to François et al. (2024) for providing the deep hedging framework. 
 
 ```nohighlight
 cd pipeline
