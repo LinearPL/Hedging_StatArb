@@ -1,4 +1,4 @@
-## Hedging for Stat Arb Strategies**
+## Hedging for Stat Arb Strategies
 
 This repository provides a hedging environment for statistical arbitrage. It utilizes a deep policy gradient reinforcement learning (RL) algorithm to analyze this relationship. The repository consists of two primary components:
 
